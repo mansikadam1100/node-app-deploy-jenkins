@@ -45,9 +45,11 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 ![](./img/p1.png)
 
 * ## Bulid Steps > Execute shell:
+```
 * sudo apt install nodejs -y
 * sudo apt install npm -y
 * sudo npm install -g pm2
+```
 ![](./img/pp1.png)
 
 * ## Add Post-bulid Action > Bulid other project
@@ -139,6 +141,7 @@ By setting up Node.js deployment on Jenkins using freestyle projects, you’ve b
 This approach not only saves time but also reduces human errors, ensuring your application is always up-to-date and running smoothly. While freestyle projects are great for getting started, you can later upgrade to Jenkins Pipeline as Code for more flexibility, scalability, and better maintainability.
 
 With the right automation in place, you can focus more on building features and less on managing deployments — turning ideas into running applications faster than ever!
+
 
 
 
