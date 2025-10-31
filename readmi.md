@@ -8,7 +8,7 @@ Automating your Node.js application deployment with Jenkins helps you deliver up
 
 * Jenkins running the pipeline jobs. The GitHub repo hosts your Node.js application code.
 * pm2 ensures your app runs continuously and restarts on failure.
-* The application is accessible externally on port 3000.
+* The application is accessible externally on **port 3000**.
 
 ## Prerequisites
 Before you start, make sure you have the following in place:
@@ -39,7 +39,7 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 
 ## Job-1: setup environment
 * Click New Item.
-* Enter name: **01-setup-env**.
+* Enter name: `01-setup-env`.
 * Choose Freestyle project, click OK.
 
 ![](./img/p1.png)
@@ -54,14 +54,14 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 
 * ## Add Post-bulid Action > Bulid other project
 
-* Enter downstream job's name: **02-node-pull**
+* Enter downstream job's name: `02-node-pull`
 
 * Then click save
 
 ## Job-2: Pull repo from github
 * Click New Item.
 
-* Enter name: **02-node-pull**.
+* Enter name: `02-node-pull`.
 
 * Choose Freestyle project, click OK.
 
@@ -69,33 +69,33 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 
 * Enter your Git repository URL, e.g.: https://github.com/iamtruptimane/node-js-app-CICD.git
 
-* **Branch**: **main**(or whatever your default is)
+* **Branch**: `main`(or whatever your default is)
 
 ![](./img/p4.png)
 
 * ## Add Post-bulid Action > Bulid other project
 
-* Enter downstream job's name: **03-install-dependency**
+* Enter downstream job's name: `03-install-dependency`
 
 * Then click save
 
 ## Job-3: Install Dependencies
 * Click New Item.
 
-* Enter name: **03-install-dependency**.
+* Enter name: `03-install-dependency`.
 
 * Choose Freestyle project, click OK.
 
 * Bulid Steps > Execute shell:
-
+```
 * cd /var/lib/jenkins/workspace/  02-node-pull
 * sudo npm install
-
+```
 ![](./img/p5.png)
 
 * ## Add Post-bulid Action > Bulid other project
 
-* Enter downstream job's name: **03-install-dependency**
+* Enter downstream job's name: `03-install-dependency`
 * Then click save
 
 ## Job-4: Install Dependencies
@@ -113,7 +113,7 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 ![](./img/p6.png)
 * ## Add Post-bulid Action > Bulid other project
 
-* Enter downstream job's name: **04-deploy-node**
+* Enter downstream job's name: `04-deploy-node`
 
 * Then click save
 
@@ -131,8 +131,9 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 
    ## Access Application
    open browser and go to
-
-http://<Public-IP>:**3000**
+```
+http://<Public-IP>:3000
+```
 ![](./img/p8.png)
 
 ## Conclusion
@@ -141,6 +142,7 @@ By setting up Node.js deployment on Jenkins using freestyle projects, you’ve b
 This approach not only saves time but also reduces human errors, ensuring your application is always up-to-date and running smoothly. While freestyle projects are great for getting started, you can later upgrade to Jenkins Pipeline as Code for more flexibility, scalability, and better maintainability.
 
 With the right automation in place, you can focus more on building features and less on managing deployments — turning ideas into running applications faster than ever!
+
 
 
 
