@@ -23,7 +23,7 @@ Before you start, make sure you have the following in place:
 
 * Open Jenkins web UI port (default **8080**) accessible via your security groups.
 
-* Open your Node.js application port (e.g., **83000**) in security group to allow external access.
+* Open your Node.js application port (e.g., **3000**) in security group to allow external access.
 
 
 ## Up Jenkins Freestyle Project
@@ -46,9 +46,9 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 
 * ## Bulid Steps > Execute shell:
 ```
-* sudo apt install nodejs -y
-* sudo apt install npm -y
-* sudo npm install -g pm2
+ sudo apt install nodejs -y
+ sudo apt install npm -y
+ sudo npm install -g pm2
 ```
 ![](./img/pp1.png)
 
@@ -107,8 +107,8 @@ We will create four Jenkins freestyle jobs to automate the deployment pipeline:
 
 * Bulid Steps > Execute shell:
 
-* cd /var/lib/jenkins/workspace/02-node-pull
-* pm2 start app.js --name node-app || pm2 restart node-app
+ cd /var/lib/jenkins/workspace/02-node-pull
+ pm2 start app.js --name node-app || pm2 restart node-app
 
 ![](./img/p6.png)
 * ## Add Post-bulid Action > Bulid other project
@@ -142,6 +142,7 @@ By setting up Node.js deployment on Jenkins using freestyle projects, you’ve b
 This approach not only saves time but also reduces human errors, ensuring your application is always up-to-date and running smoothly. While freestyle projects are great for getting started, you can later upgrade to Jenkins Pipeline as Code for more flexibility, scalability, and better maintainability.
 
 With the right automation in place, you can focus more on building features and less on managing deployments — turning ideas into running applications faster than ever!
+
 
 
 
